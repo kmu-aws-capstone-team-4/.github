@@ -25,6 +25,16 @@
 
 ---
 
+### 👉 동영상으로 프로젝트 살펴보기
+
+<div align="center">
+
+[![Video Label](http://img.youtube.com/vi/IRrJmqBDQqc/0.jpg)](https://youtu.be/IRrJmqBDQqc)
+
+</div>
+
+---
+
 ## 📑 목차
 
 1. [한 줄 요약](#-한-줄-요약)
