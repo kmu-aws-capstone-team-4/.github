@@ -181,29 +181,29 @@ S3 → SNS → SQS Fan-out → Lambda 5종<br/>
 
 <div align="center">
 
-📐 **[전체 통합 인프라 다이어그램 보기 →](mefit-diagrams/full_infrastructure_compact.png)**
+📐 **[전체 통합 인프라 다이어그램 보기 →](https://github.com/kmu-aws-capstone-team-4/mefit-diagrams/full_infrastructure_compact.png)**
 *(12개 마이크로서비스 + k3s 클러스터 + AWS 이벤트 파이프라인 통합 구성도)*
 
 </div>
 
 ---
 
-## 🧩 마이크로서비스 (12개 모듈)
+## 🧩 프로젝트/모듈 분리
 
 | # | 모듈 | 역할 | 핵심 기술 |
 |:--:|---|---|---|
-| 1 | [`backend`](backend/) | Django REST 기반 메인 API 서버 · 13개 도메인 앱 · WebSocket / SSE | Django 6 · DRF · Celery · Channels |
-| 2 | [`frontend`](frontend/) | React SPA · 28 페이지 · Feature-Sliced Design 6 layer | React 19 · Vite · Bun · Tailwind 4 |
-| 3 | [`scraping`](scraping/) | 채용공고 URL → 구조화 정보 자동 추출 Worker · Plugin 구조 · 2단계 Fallback | Celery · Playwright · httpx · LLM |
-| 4 | [`analysis-resume`](analysis-resume/) | 이력서 LLM 분석 + 벡터 임베딩 Worker · 섹션 Chunking | LangChain · pdfplumber · python-docx · Pydantic |
-| 5 | [`interview-analysis-report`](interview-analysis-report/) | 면접 분석 리포트 Worker · 5단계 파이프라인 (Loader → VoiceAnalysisInvoker → AnalysisContext.build → LLMAnalyzer → Repository.save) | LangChain · Pydantic · Hypothesis |
-| 6 | [`analysis-stt`](analysis-stt/) | 음성 인식 Worker · faster-whisper small/int8 · CPU 한국어 디코딩 · Singleton 모델 | faster-whisper · Celery · S3 |
-| 7 | [`analysis-video`](analysis-video/) | **AWS Lambda 4종** — video-converter / frame-extractor / audio-extractor / voice-analyzer | AWS Lambda · ffmpeg · S3 · SNS · SQS |
-| 8 | [`face-analyzer`](face-analyzer/) | **AWS Lambda 1종** — MediaPipe Face Landmarker로 표정 4분류 (긍정 / 부정 / 중립 / 얼굴 미감지) | MediaPipe · numpy · AWS Lambda |
-| 9 | [`voice-api`](voice-api/) | TTS 음성 합성 서버 · audio/mpeg 스트리밍 · Stateless · Bearer JWT 위임 | FastAPI · edge-tts (14언어 322 voices) |
-| 10 | [`infra`](infra/) | k3s 다중 노드 클러스터 운영 · Traefik Ingress · `deploy.sh` 한 줄 무중단 배포 / 롤백 | k3s · Traefik · GitHub Actions |
-| 11 | [`mefit-tools`](mefit-tools/) | 로컬 개발 환경 관리 GUI · Docker Compose 통합 제어 · 1명령어 부팅 | Streamlit · Docker Compose |
-| 12 | [`mefit-diagrams`](mefit-diagrams/) | 모든 설계 다이어그램의 코드 관리 (Component / Activity / State / Sequence) | PlantUML · Python diagrams |
+| 1 | [`backend`](https://github.com/kmu-aws-capstone-team-4/backend/) | Django REST 기반 메인 API 서버 · 13개 도메인 앱 · WebSocket / SSE | Django 6 · DRF · Celery · Channels |
+| 2 | [`frontend`](https://github.com/kmu-aws-capstone-team-4/frontend/) | React SPA · 28 페이지 · Feature-Sliced Design 6 layer | React 19 · Vite · Bun · Tailwind 4 |
+| 3 | [`scraping`](https://github.com/kmu-aws-capstone-team-4/scraping/) | 채용공고 URL → 구조화 정보 자동 추출 Worker · Plugin 구조 · 2단계 Fallback | Celery · Playwright · httpx · LLM |
+| 4 | [`analysis-resume`](https://github.com/kmu-aws-capstone-team-4/analysis-resume/) | 이력서 LLM 분석 + 벡터 임베딩 Worker · 섹션 Chunking | LangChain · pdfplumber · python-docx · Pydantic |
+| 5 | [`interview-analysis-report`](https://github.com/kmu-aws-capstone-team-4/interview-analysis-report/) | 면접 분석 리포트 Worker · 5단계 파이프라인 (Loader → VoiceAnalysisInvoker → AnalysisContext.build → LLMAnalyzer → Repository.save) | LangChain · Pydantic · Hypothesis |
+| 6 | [`analysis-stt`](https://github.com/kmu-aws-capstone-team-4/analysis-stt/) | 음성 인식 Worker · faster-whisper small/int8 · CPU 한국어 디코딩 · Singleton 모델 | faster-whisper · Celery · S3 |
+| 7 | [`analysis-video`](https://github.com/kmu-aws-capstone-team-4/analysis-video/) | **AWS Lambda 4종** — video-converter / frame-extractor / audio-extractor / voice-analyzer | AWS Lambda · ffmpeg · S3 · SNS · SQS |
+| 8 | [`face-analyzer`](https://github.com/kmu-aws-capstone-team-4/face-analyzer/) | **AWS Lambda 1종** — MediaPipe Face Landmarker로 표정 4분류 (긍정 / 부정 / 중립 / 얼굴 미감지) | MediaPipe · numpy · AWS Lambda |
+| 9 | [`voice-api`](https://github.com/kmu-aws-capstone-team-4/voice-api/) | TTS 음성 합성 서버 · audio/mpeg 스트리밍 · Stateless · Bearer JWT 위임 | FastAPI · edge-tts (14언어 322 voices) |
+| 10 | [`infra`](https://github.com/kmu-aws-capstone-team-4/infra/) | k3s 다중 노드 클러스터 운영 · Traefik Ingress · `deploy.sh` 한 줄 무중단 배포 / 롤백 | k3s · Traefik · GitHub Actions |
+| 11 | [`mefit-tools`](https://github.com/kmu-aws-capstone-team-4/mefit-tools/) | 로컬 개발 환경 관리 GUI · Docker Compose 통합 제어 · 1명령어 부팅 | Streamlit · Docker Compose |
+| 12 | [`mefit-diagrams`](https://github.com/kmu-aws-capstone-team-4/mefit-diagrams/) | 모든 설계 다이어그램의 코드 관리 (Component / Activity / State / Sequence) | PlantUML · Python diagrams |
 
 > [!TIP]
 > 각 모듈은 **독립 Dockerfile + Deployment 매니페스트**로 단독 배포 가능하며,
