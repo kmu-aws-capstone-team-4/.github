@@ -1,14 +1,14 @@
 <div align="center">
 
 <a href="https://mefit.kr">
-  <img src="frontend/mefit_logo_blue.png" alt="meFit · 미핏" width="800" />
+  <img src="https://github.com/user-attachments/assets/72a2d8ba-5bf7-4507-b37b-5fbb2a003901" alt="meFit · 미핏" width="800" />
 </a>
 
 <br/>
 
 ### 未fit, meFit. 면접의 기회는 평등해야 합니다.
 
-이력서와 채용공고를 기반으로 AI가 실제 면접관처럼 질문하고, 음성·영상·표정까지 분석해주는 자기주도 AI 가상 면접 트레이너.
+이력서와 채용공고를 기반으로 AI가 실제 면접관처럼 질문하고, 음성·영상·표정까지 분석해주는 자기주도 AI 가상 면접 트레이닝 서비스
 
 <br/>
 
